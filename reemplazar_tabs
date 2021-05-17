@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Reemplaza tabuladores por cuatro espacios.
+
+cat - | sed "s/\x9/    /g"
