@@ -1,5 +1,10 @@
 #!/bin/sh
 
-# ldd type x
-
-ldd "$(type $@ | sed -r "s/([^/]*)(\/.*)/\2/g")"
+typ="$(type $@ 2>/dev/null)"
+if [[ "$typ" != "" ]];then
+  busca_ruta="$(echo "$typ" | grep "/")"
+  if [[ "$busca_ruta" != "" ]];then
+    ruta="$(echo "$busca_ruta" | sed -r "s/([^/]*)(\/.*)/\2/g")"
+    ldd "$ruta"
+  fi
+fi
