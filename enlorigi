@@ -1,10 +1,16 @@
 #!/bin/sh
 
-typ="$(type $@ 2>/dev/null)"
+typ="$(type $@ 2>/dev/type)"
 if [[ "$typ" != "" ]];then
-  busca_ruta="$(echo "$typ" | grep "/")"
+  busca_ruta="$(echo "$typ" | grep "/" 2>/dev/null)"
   if [[ "$busca_ruta" != "" ]];then
     ruta="$(echo "$busca_ruta" | sed -r "s/([^/]*)(\/.*)/\2/g")"
-    ldd "$ruta"
+    l="$(ldd "$ruta" 2>/dev/ldd)"
+    if [[ "$(cat /dev/ldd)" != "	no es un ejecutable dinámico" ]];then
+      echo "'$(cat /dev/ldd)'"
+      echo "$l"
+    else
+      cat "$ruta"
+    fi
   fi
 fi
