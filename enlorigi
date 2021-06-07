@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# ldd type x
+
+ldd "$(type $@ | sed -r "s/([^/]*)(\/.*)/\2/g")"
