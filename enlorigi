@@ -6,7 +6,10 @@ if [[ "$typ" != "" ]];then
   if [[ "$busca_ruta" != "" ]];then
     ruta="$(echo "$busca_ruta" | sed -r "s/([^/]*)(\/.*)/\2/g")"
     l="$(ldd "$ruta" 2>/dev/ldd)"
-    if [[ "$(cat /dev/ldd)" != "	no es un ejecutable dinámico" ]];then
+    d="$(cat /dev/ldd)"
+    if [[ "$d" != "	no es un ejecutable dinámico"
+       && "$d" != "	not a dynamic executable"
+    ]];then
       #echo "'$(cat /dev/ldd)'"
       echo "$l"
     else
