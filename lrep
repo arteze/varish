@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Busca archivos en las carpetas de librerías de Perl.
+# Ejemplo: lrep Encode
+
+find "/usr/local/lib64/perl5" -name "*$1*"
+find "/usr/local/share/perl5" -name "*$1*"
+find "/usr/lib64/perl5/vendor_perl" -name "*$1*"
+find "/usr/share/perl5/vendor_perl" -name "*$1*"
+find "/usr/lib64/perl5" -name "*$1*"
+find "/usr/share/perl5" -name "*$1*"
