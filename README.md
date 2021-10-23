@@ -1,2 +1,2 @@
-# varish
-varish ... Varios comandos de bash
+# variosh
+Varios comandos de bash
