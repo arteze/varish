@@ -1,5 +1,6 @@
 #/bin/sh
 
+echo "Argumento: $1"
 nombre=$(basename $1)
 ruta=$(dirname $1)
 rutas="/lib64
